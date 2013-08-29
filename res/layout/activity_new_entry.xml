@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2012 Amazon.com, Inc. or its affiliates. All Rights Reserved. -->
+<!-- $Revision: #1 $, $Date: 2012/11/09 $ -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp" >
+
+    <EditText
+        android:id="@+id/editText_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="@string/hint_name"
+        android:inputType="textAutoComplete"
+        >
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editText_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText_name"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="@string/hint_address"
+        android:inputType="text"
+        />
+    
+    <EditText
+        android:id="@+id/editText_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText_address"
+        android:ems="10"
+        android:hint="@string/hint_city"
+        android:inputType="textAutoComplete" >
+    </EditText>
+    
+     <EditText
+        android:id="@+id/editText_zip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText_city"
+        android:ems="10"
+        android:hint="@string/hint_zip"
+        android:inputType="number" >
+    </EditText>
+    
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText_zip"
+        android:layout_marginTop="15dp"
+        android:onClick="onSaveButtonClick"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="@string/button_save" />
+
+</RelativeLayout>

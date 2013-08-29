@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2012 Amazon.com, Inc. or its affiliates. All Rights Reserved. -->
+<!-- $Revision: #1 $, $Date: 2012/11/09 $ -->
+<resources>
+
+    
+     
+	<string name="item1">Jefferson Park Golf Club</string>
+	<string name="address1">4101 Beacon Avenue South</string>
+	<string name="city1">Seattle, WA</string>
+    <string name="zip1">98108</string>
+	
+    <string name="item2">Broadmoor Golf Club</string>
+    <string name="address2">2340 Broadmoor Drive East</string>
+    <string name="city2">Seattle, WA</string>
+    <string name="zip2">98112</string>
+    
+    <string name="item3">Willows Run Golf Complex</string>
+    <string name="address3">10402 Willows Road Northeast</string>
+    <string name="city3">Redmond, WA</string>
+    <string name="zip3">98052</string>
+    
+    <string name="item4">Overlake Golf &amp; Country Club</string>
+    <string name="address4">8000 Northeast 16th Street</string>
+    <string name="city4">Medina, WA</string>
+    <string name="zip4">98039</string>
+    
+    <string name="item5">Golf Club At Newcastle</string>
+    <string name="address5">15500 6 Penny Lane</string>
+    <string name="city5">Newcastle, WA</string>
+    <string name="zip5">98059</string>
+</resources>

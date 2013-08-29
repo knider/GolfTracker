@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Golf Tracker</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="title_activity_main">Courses</string>
+    <string name="title_activity_new_entry">New Course</string>
+    <string name="title_activity_edit_entry">Edit Course</string>
+    <string name="title_course_page">Courses</string>
+    <string name="menu_add">Add Course</string>
+    <string name="menu_clear">Clear</string>
+    <string name="menu_reset">Reset to Default</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_address">Street Address</string>
+    <string name="hint_city">City, ST</string>
+    <string name="hint_zip">Zip Code</string>
+    <string name="button_save">Save</string>
+    <string name="error_name_is_empty">Name cannot be empty</string>
+    <string name="error_unknown_param">Unknown parameter</string>
+    <string name="error_generic">Failed</string>
+    <string name="holesText">Holes: </string>
+    <string name="playGolfButton">Play Golf!</string>
+
+</resources>

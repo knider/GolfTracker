@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/courseName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/courseAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </TextView>
+    
+    <TextView
+        android:id="@+id/courseCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </TextView>
+    
+    <TextView
+        android:id="@+id/courseZip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/HolesLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/holesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/holesText" />
+
+        <EditText
+            android:id="@+id/holesNumText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:inputType="text"
+            android:text="18" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/playGolfButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="5dp"
+        android:text="@string/playGolfButton" />
+
+    <TextView
+        android:id="@+id/courseScoresTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
