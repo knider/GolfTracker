@@ -38,7 +38,7 @@ public class SampleDatabaseActivity extends Activity {
     /** Request code for NewEntryActivity. */
     private static final int REQUEST_CODE_NEW_ENTRY = 0;
     
-    /** Request code for NewEntryActivity. */
+    /** Request code for EditEntryActivity. */
     private static final int REQUEST_CODE_EDIT_ENTRY = 10;
 
     /** A helper object to manage the database. */
@@ -48,7 +48,7 @@ public class SampleDatabaseActivity extends Activity {
     private ListView mListview = null;
 
     /** Used by <code>DatabaseTask</code> to perform various actions. */
-    private enum RequestCode {
+    public enum RequestCode {
         clear, close, delete, insert, open, reset, edit, view
     }
 
@@ -63,6 +63,7 @@ public class SampleDatabaseActivity extends Activity {
         mListview = (ListView) findViewById(R.id.listview_course);
 
         // Subscribe and handle the item click event.
+        /*
         mListview.setOnItemLongClickListener(new OnItemLongClickListener() {
             public boolean onItemLongClick(final AdapterView<?> parent, final View view, final int position,
                     final long id) {
@@ -71,6 +72,28 @@ public class SampleDatabaseActivity extends Activity {
                 final int item_id = cursor.getInt(cursor.getColumnIndex("_id"));
 
                 new DatabaseTask().execute(RequestCode.delete, mDatabaseHelper, item_id);
+
+                return true;
+            }
+        });
+        */
+        
+        mListview.setOnItemLongClickListener(new OnItemLongClickListener() {
+            public boolean onItemLongClick(final AdapterView<?> parent, final View view, final int position,
+                    final long id) {
+                // Get the item's data ID at the given position.
+                final Cursor cursor = (Cursor) parent.getItemAtPosition(position);
+                final int item_id = cursor.getInt(cursor.getColumnIndex("_id"));
+
+                final String[] intentItems = mDatabaseHelper.getForEdit(item_id);
+                
+                final Intent intent = new Intent(SampleDatabaseActivity.this, EditEntryActivity.class);
+                intent.putExtra(EXTRA_ID, intentItems[0]);
+                intent.putExtra(EXTRA_NAME, intentItems[1]);
+                intent.putExtra(EXTRA_ADDRESS, intentItems[2]);
+                intent.putExtra(EXTRA_CITY, intentItems[3]);
+                intent.putExtra(EXTRA_ZIP, intentItems[4]);
+                startActivityForResult(intent, REQUEST_CODE_EDIT_ENTRY);
 
                 return true;
             }
@@ -197,7 +220,7 @@ public class SampleDatabaseActivity extends Activity {
     }
 
     /** An <code>AsyncTask</code> that initialize the database. */
-    private class DatabaseTask extends AsyncTask<Object, Void, Cursor> {
+    public class DatabaseTask extends AsyncTask<Object, Void, Cursor> {
 
         /** {@inheritDoc} */
         @Override

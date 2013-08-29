@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|center_horizontal"
+    android:orientation="vertical" 
+     >
+
+   <!--  <Button
+        android:id="@+id/courseSearchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/course_search_button"
+        android:onClick="onCourseSearchButtonClick"
+        android:layout_margin="15dp"
+        /> -->
+
+    <Button
+        android:id="@+id/viewCourseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_course_button"
+        android:onClick="onCourseViewButtonClick"
+        android:layout_margin="15dp" 
+        />
+
+    <Button
+        android:id="@+id/locateCourseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/locate_course_button" 
+        android:onClick="onCourseLocateButtonClick"
+        android:layout_margin="15dp"
+        />
+
+    <Button
+        android:id="@+id/createCourseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_course_button"
+        android:onClick="onCourseCreateButtonClick" 
+        android:layout_margin="15dp"
+        />
+
+    <Button
+        android:id="@+id/playGolfButtonHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/playGolfButton"
+        android:onClick="onPlayGolfButtonClick"
+        android:layout_margin="15dp"
+        />
+
+</LinearLayout>

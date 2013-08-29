@@ -1,9 +1,15 @@
 // Copyright 2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 package com.niderk.golftracker;
 
+import com.niderk.golftracker.SampleDatabaseActivity.RequestCode;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,6 +21,9 @@ import android.widget.Toast;
  */
 public class EditEntryActivity extends Activity {
 
+    /** Logging tag to be used for logging error. */
+    private static final String LOG_TAG = EditEntryActivity.class.getSimpleName();
+    
 	/** ID used to extract the id from the <code>Intent</code> in the <code>onActivityResult</code> method. */
     public final static String ID_ID = "_id";
 	
@@ -30,6 +39,9 @@ public class EditEntryActivity extends Activity {
     /** ID used to extract the zip from the <code>Intent</code> in the <code>onActivityResult</code> method. */
     public final static String ID_ZIP = "zip";
     
+	/** A helper object to manage the database. */
+    private DatabaseHelper mDatabaseHelper = null;
+    
     public String _id = null;
     
     
@@ -39,6 +51,7 @@ public class EditEntryActivity extends Activity {
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_entry);
+        mDatabaseHelper = new DatabaseHelper(this);
         
         Intent intent = getIntent();
         //final String extra_id = intent.getStringExtra(SampleDatabaseActivity.EXTRA_ID);
@@ -62,6 +75,90 @@ public class EditEntryActivity extends Activity {
         editText_city.setText(extra_city);
         editText_zip.setText(extra_zip);
         
+    }
+    
+    /** {@inheritDoc} */
+    @Override
+    public boolean onCreateOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_edit, menu);
+        return true;
+    }
+    
+    /** {@inheritDoc} */
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        switch (item.getItemId()) {
+          
+        case R.id.menu_delete:
+        	int idNum = 0;
+        	try {
+        	    idNum = Integer.parseInt(_id);
+        	} catch(NumberFormatException nfe) { 
+        		Log.e(LOG_TAG, nfe.getLocalizedMessage(), nfe);
+		        return false;
+        	}
+        	new DatabaseTask().execute(RequestCode.delete, mDatabaseHelper, idNum);
+        	
+        	Toast.makeText(this, getResources().getString(R.string.delete_ok), Toast.LENGTH_SHORT).show();
+        	
+        	final Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
+        	return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    
+    
+    /** An <code>AsyncTask</code> that initialize the database. */
+    public class DatabaseTask extends AsyncTask<Object, Void, Cursor> {
+
+        /** {@inheritDoc} */
+        @Override
+        protected Cursor doInBackground(final Object... params) {
+            if (params.length < 2) {
+                Log.e(LOG_TAG, "params too short");
+                return null;
+            }
+            if (!(params[0] instanceof RequestCode)) {
+                Log.e(LOG_TAG, "not an instance of RequestCode");
+                return null;
+            }
+            if (!(params[1] instanceof DatabaseHelper)) {
+                Log.e(LOG_TAG, "not an instance of DatabaseHelper");
+                return null;
+            }
+
+            final RequestCode requestCode = (RequestCode) params[0];
+            final DatabaseHelper databaseHelper = (DatabaseHelper) params[1];
+
+            switch (requestCode) {
+				case delete:
+				    if (params.length != 3 || !(params[2] instanceof Integer)) {
+				        Log.e(LOG_TAG,
+				                EditEntryActivity.this.getResources().getString(R.string.error_unknown_param));
+				        return null;
+				    }
+				
+				    try {
+				        final int item_id = Integer.parseInt(params[2].toString());
+				
+				        // Delete the entry from the database.
+				        databaseHelper.deleteById(item_id);
+				    } catch (final NumberFormatException e) {
+				        Log.e(LOG_TAG, e.getLocalizedMessage(), e);
+				        return null;
+				    }
+				    break;
+				
+				default:
+                    return null;
+            }
+
+            return databaseHelper.retrieveAllData();
+        }
     }
     
     /**
