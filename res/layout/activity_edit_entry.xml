@@ -14,7 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:ems="10" >
+        android:ems="10"
+        tools:ignore="SelectableText,UnusedIds" >
+
     </TextView>
     
     <EditText
@@ -73,6 +75,7 @@
         android:onClick="onSaveButtonClick"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
-        android:text="@string/button_save" />
+        android:text="@string/button_save"
+        tools:ignore="UnusedIds" />
 
 </RelativeLayout>

@@ -53,6 +53,19 @@ public class HomeActivity extends Activity {
         startActivityForResult(intent, REQUEST_CODE_NEW_ENTRY);
 	}
 	
+	
+	public void onPlayGolfButtonClick(final View view) {
+		//final Intent intent = new Intent(this, NewEntryActivity.class);
+        //startActivityForResult(intent, REQUEST_CODE_NEW_ENTRY);
+		return;
+	}
+	
+	public void onCourseLocateButtonClick(final View view) {
+		//final Intent intent = new Intent(this, NewEntryActivity.class);
+        //startActivityForResult(intent, REQUEST_CODE_NEW_ENTRY);
+		return;
+	}
+	
 	protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_NEW_ENTRY && resultCode == RESULT_OK && data != null) {
